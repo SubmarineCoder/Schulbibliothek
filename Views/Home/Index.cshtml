@@ -1,0 +1,40 @@
+﻿@model Schulbibliothek.Viewmodels.TransaktionenViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>Status</th>
+                <th>BuchTitel</th>
+                <th>Datum</th>
+                <th>Name</th>
+                <th>Bild</th>
+                <th>Beschreibung</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var transaktion in Model.Transaktionen)
+            {
+                <tr>
+                    @if (transaktion.istAusgeliehen == true)
+                    {
+                        <td>Ausgliehen</td>
+                    }
+                    else if(transaktion.istAusgeliehen == false)
+                    {
+                        <td>Zurückgegeben</td>
+                    }
+                    <td>@transaktion.Buch.BuchName</td>
+                    <td>@transaktion.Datum</td>
+                    <td>@transaktion.Person.Vorname  @transaktion.Person.Nachname</td>
+                    <td>@transaktion.Person.Bild</td>
+                    <td>@transaktion.Beschreibung</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
