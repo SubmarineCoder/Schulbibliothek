@@ -44,5 +44,21 @@ namespace Schulbibliothek.Controllers
             return View();
         }
 
+        [HttpPost]
+
+        public IActionResult PersonHinzufuegen(PersonViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+                return View(viewModel);
+
+            var person = _mapper.Map(viewModel);
+
+            if (person != null)
+                _context.Personen.Add(person);
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(PersonHinzufuegen));
+        }
+
     }
 }
