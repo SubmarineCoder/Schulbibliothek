@@ -1,0 +1,14 @@
+﻿@model Schulbibliothek.Viewmodels.PersonViewModel
+<center>
+    <form method="post" asp-action="PersonHinzufuegen" asp-controller="Mitarbeiter">
+        <div>
+            <label asp-for="Vorname">Vorname</label> <br />
+            <input type="text" asp-for="Vorname" placeholder="Vorname eingeben" />
+        </div>
+        <div>
+            <label asp-for="Nachname">Nachname</label> <br />
+            <input type="text" asp-for="Nachname" placeholder="Nachname eingeben" />
+        </div>
+        <button type="submit">Hinzufügen</button>
+    </form>
+</center>

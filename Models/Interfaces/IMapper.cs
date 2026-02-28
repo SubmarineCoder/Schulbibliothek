@@ -7,5 +7,7 @@ namespace Schulbibliothek.Models.Interfaces
         TransaktionViewModel Map(Transaktion transaktion);
 
         Buch Map(BuchViewModel buchViewModel);
+
+        Person Map(PersonViewModel personViewModel);
     }
 }

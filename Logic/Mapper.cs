@@ -37,5 +37,17 @@ namespace Schulbibliothek.Logic
 
             return buch;
         }
+
+        public Person Map(PersonViewModel personViewModel)
+        {
+            if (personViewModel == null) return new Person();
+
+            var person = new Person();
+
+            person.Vorname = personViewModel.Vorname;
+            person.Nachname = personViewModel.Nachname;
+
+            return person;
+        }
     }
 }
