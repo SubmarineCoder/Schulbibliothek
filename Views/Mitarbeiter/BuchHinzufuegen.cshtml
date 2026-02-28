@@ -1,0 +1,14 @@
+﻿@model Schulbibliothek.Viewmodels.BuchViewModel
+<center>
+    <form method="post" asp-action="BuchHinzufuegen" asp-controller="Mitarbeiter">
+        <div>
+            <label asp-for="BuchName">Buchtitel</label> <br />
+            <input type="text" asp-for="BuchName" placeholder="Geben Sie den Titel ein" />
+        </div>
+        <div>
+            <label asp-for="Autor">Autor</label> <br />
+            <input type="text" asp-for="Autor" placeholder="Geben Sie den Autor ein" />
+        </div>
+        <button type="submit">Hinzufügen</button>
+    </form>
+</center>

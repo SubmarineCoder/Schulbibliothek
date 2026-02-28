@@ -1,11 +1,17 @@
-﻿namespace Schulbibliothek.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Schulbibliothek.Models
 {
     public class Buch
     {
         public int BuchId { get; set; }
-        public string BuchName { get; set; } = null!;
-        public string Autor { get; set; } = null!;
-        public bool istVerfuegbar { get; set; } = true;
+
+        [StringLength(100)]
+        public string BuchName { get; set; } = string.Empty;
+
+        [StringLength(30)]
+        public string Autor { get; set; } = string.Empty;
+        public bool IstVerfuegbar { get; set; } = true;
         public IEnumerable<Transaktion>? Transaktionen { get; set; }
 
     }

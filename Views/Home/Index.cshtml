@@ -20,11 +20,11 @@
             @foreach (var transaktion in Model.Transaktionen)
             {
                 <tr>
-                    @if (transaktion.istAusgeliehen == true)
+                    @if (transaktion.IstAusgeliehen == true)
                     {
                         <td>Ausgliehen</td>
                     }
-                    else if(transaktion.istAusgeliehen == false)
+                    else if(transaktion.IstAusgeliehen == false)
                     {
                         <td>Zurückgegeben</td>
                     }

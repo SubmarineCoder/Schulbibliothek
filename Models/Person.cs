@@ -1,11 +1,15 @@
-﻿namespace Schulbibliothek.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Schulbibliothek.Models
 {
     public class Person
     {
         public int PersonId { get; set; }
 
+        [StringLength(30)]
         public string Vorname { get; set; } = null!;
 
+        [StringLength(30)]
         public string Nachname { get; set; } = null!;
 
         public byte[]? Bild { get; set; }

@@ -10,7 +10,7 @@ namespace Schulbibliothek.Models
 
         public Buch Buch { get; set; } = null!;
 
-        public bool istAusgeliehen { get; set; }
+        public bool IstAusgeliehen { get; set; }
 
         public DateOnly Datum {  get; set; }
 

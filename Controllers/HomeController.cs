@@ -30,13 +30,13 @@ namespace Schulbibliothek.Controllers
             var trantsaktionen = _dbContext.Transaktionen.ToList();
 
             //viewModel.Transaktionen = trantsaktionen;
-            //Test Dummy Daten Transaktion
-            viewModel.Transaktionen = new List<Transaktion>() { new Transaktion() {
-                Beschreibung = "test",
-                Buch = new Buch() { Autor = "test", BuchName = "test", istVerfuegbar = true },
-                Datum = DateOnly.FromDateTime(new DateTime(2021, 12, 12)),
-                istAusgeliehen = false,
-                Person = new Person() { Vorname = "Peter", Nachname = "schilling", Aktiv = true } } };
+            //Test Dummy Daten Transaktion bevor change to transaktionenviewmodel
+            //viewModel.Transaktionen = new List<Transaktion>() { new Transaktion() {
+            //    Beschreibung = "test",
+            //    Buch = new Buch() { Autor = "test", BuchName = "test", IstVerfuegbar = true },
+            //    Datum = DateOnly.FromDateTime(new DateTime(2021, 12, 12)),
+            //    IstAusgeliehen = false,
+            //    Person = new Person() { Vorname = "Peter", Nachname = "schilling", Aktiv = true } } };
 
             return View(viewModel);
         }

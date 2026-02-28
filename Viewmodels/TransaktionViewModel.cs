@@ -1,4 +1,6 @@
-﻿namespace Schulbibliothek.Viewmodels
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Schulbibliothek.Viewmodels
 {
     public class TransaktionViewModel
     {
@@ -7,6 +9,7 @@
         public DateOnly Datum {  get; set; }
         public string PersonName { get; set; } = null!;
         public string? BildLink { get; }
+        public string Beschreibung { get; set; } = null!;
 
 
         //Eigenschaft
