@@ -1,0 +1,35 @@
+﻿@model Schulbibliothek.Viewmodels.TransaktionAnlegenViewModel
+
+
+<center>
+    <form method="post" asp-controller="Mitarbeiter" asp-action="TransaktionAnlegen">
+
+        <div>
+            <label asp-for="AusleihenZurueckgeben">Ausleih</label>
+            <input type="radio" asp-for="AusleihenZurueckgeben" value="true" />
+            <label asp-for="AusleihenZurueckgeben">Rückgabe</label>
+            <input type="radio" asp-for="AusleihenZurueckgeben" value="false" />
+        </div>
+
+        <div>
+            <select asp-for="Personen">
+
+                @foreach (var person in Model.Personen)
+                {
+                    <option value="">@person.Vorname @person.Nachname</option>
+                }
+            </select>
+
+        </div>
+        <div>
+            <select asp-for="Buecher">
+                @foreach (var buch in Model.Buecher)
+                {
+                    <option value="">@buch.BuchName </option>
+                }
+            </select>
+        </div>
+
+        <button type="submit">Neue Transaktion anlegen</button>
+    </form>
+</center>
