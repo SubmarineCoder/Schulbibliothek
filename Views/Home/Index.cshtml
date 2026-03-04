@@ -20,18 +20,11 @@
             @foreach (var transaktion in Model.Transaktionen)
             {
                 <tr>
-                    @if (transaktion.IstAusgeliehen == true)
-                    {
-                        <td>Ausgliehen</td>
-                    }
-                    else if(transaktion.IstAusgeliehen == false)
-                    {
-                        <td>Zurückgegeben</td>
-                    }
-                    <td>@transaktion.Buch.BuchName</td>
+                    <td>@transaktion.IstAusgeliehen</td>
+                    <td>@transaktion.Buchtitel</td>
                     <td>@transaktion.Datum</td>
-                    <td>@transaktion.Person.Vorname  @transaktion.Person.Nachname</td>
-                    <td>@transaktion.Person.Bild</td>
+                    <td>@transaktion.PersonName</td>
+                    <td>@transaktion.BildLink<td>
                     <td>@transaktion.Beschreibung</td>
                 </tr>
             }

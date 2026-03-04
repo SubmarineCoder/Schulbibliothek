@@ -4,5 +4,6 @@
     {
         public string BuchName { get; set; } = null!;
         public string Autor { get; set; } = null!;
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Schulbibliothek.Data;
 using Schulbibliothek.Models.Interfaces;
 using Schulbibliothek.Viewmodels;
@@ -7,12 +8,12 @@ namespace Schulbibliothek.Controllers
 {
     public class MitarbeiterController : Controller
     {
-        private readonly SchulbibliothekDbContext _context;
+        private readonly SchulbibliothekDbContext _dbContext;
         private readonly IMapper _mapper;
 
-        public MitarbeiterController(SchulbibliothekDbContext context, IMapper mapper)
+        public MitarbeiterController(SchulbibliothekDbContext dbContext, IMapper mapper)
         {
-            _context = context;
+            _dbContext = dbContext;
             _mapper = mapper;
         }
 
@@ -31,8 +32,8 @@ namespace Schulbibliothek.Controllers
             var buch = _mapper.Map(viewModel);
             
             if(buch != null)
-                _context.Buecher.Add(buch);
-            _context.SaveChanges();
+                _dbContext.Buecher.Add(buch);
+            _dbContext.SaveChanges();
 
             return RedirectToAction(nameof(BuchHinzufuegen));
 
@@ -54,11 +55,28 @@ namespace Schulbibliothek.Controllers
             var person = _mapper.Map(viewModel);
 
             if (person != null)
-                _context.Personen.Add(person);
-            _context.SaveChanges();
+                _dbContext.Personen.Add(person);
+            _dbContext.SaveChanges();
 
             return RedirectToAction(nameof(PersonHinzufuegen));
         }
 
+        [HttpGet]
+        public IActionResult TransaktionAnlegen(TransaktionAnlegenViewModel viewModel)
+        {
+            var personen = _dbContext.Personen.Where(p => p.Aktiv == true).ToList();
+            personen.ForEach(person => viewModel.Personen.Add(_mapper.Map(person)));
+
+            var buecher = _dbContext.Buecher.Where(b => b.IstVerfuegbar == true).ToList();
+            buecher.ForEach(buch => viewModel.Buecher.Add(_mapper.Map(buch)));
+
+            return View(viewModel);
+        }
+
+        //[HttpPost]
+        //public IActionResult TransaktionAnlegen(TransaktionAnlegenViewModel viewModel)
+        //{
+        //    return View();
+        //}
     }
 }
